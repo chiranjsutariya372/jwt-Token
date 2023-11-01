@@ -4,9 +4,8 @@ const match=async(req,res,next)=>{
 let {token}=req.cookies
     if(token){
         let decode=jwt.verify(token,"fhdkjhdfk")
-        console.log(decode);
-        let {id}=decode
-        req.user=await user.findById(id)
+        req.data=await user.findById(decode.id)
+        console.log(req.data);
         next()
     }
     else{

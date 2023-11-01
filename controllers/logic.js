@@ -8,8 +8,8 @@ const home=async(req,res)=>{
 const register=async(req,res)=>{
     const {username,email,password} =req.body
     const security=await bcrypt.hash(password,10)
-    let usercreate=await user.create({username,email,password:security})
-    res.send(usercreate)
+    let data=await user.create({username,email,password:security})
+    res.send(data)
 }
 const login=async(req,res) =>{
     const {email,password}=req.body
